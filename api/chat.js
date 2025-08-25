@@ -1,6 +1,7 @@
-// api/chat.js - Fixed Vercel Serverless Function
+// api/chat.js - SECURE VERSION with Environment Variables
 
-const OPENAI_API_KEY = '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';
+// SECURE: API key from environment variable, not hardcoded!
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 const SYSTEM_PROMPT = `You are an incredibly encouraging AI tutor for a 5th grade student with ADHD. Your student is smart, curious, but needs extra support with focus and breaking things down.
 
@@ -56,6 +57,11 @@ export default async function handler(req, res) {
     }
 
     try {
+        // Check if API key is available
+        if (!OPENAI_API_KEY) {
+            throw new Error('OpenAI API key not configured in environment variables');
+        }
+
         const { message, conversationHistory = [] } = req.body;
         
         console.log('📨 Received message:', message);
@@ -75,7 +81,6 @@ export default async function handler(req, res) {
         
         console.log('🚀 Calling OpenAI API...');
         
-        // Use global fetch (available in Node.js 18+)
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
