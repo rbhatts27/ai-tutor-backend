@@ -1,4 +1,5 @@
-// api/health.js - Health Check Endpoint
+// api/health.js - Clean Health Check (No sensitive info)
+
 export default function handler(req, res) {
     // Enable CORS
     res.setHeader('Access-Control-Allow-Credentials', true);
@@ -6,21 +7,28 @@ export default function handler(req, res) {
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
     res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
-    // Handle preflight requests
     if (req.method === 'OPTIONS') {
         res.status(200).end();
         return;
     }
 
-    // Return health status
     res.status(200).json({
         status: 'healthy',
-        message: '🤖 AI Tutor Backend is running!',
+        message: '🤖 AI Tutor Backend is running securely!',
         timestamp: new Date().toISOString(),
-        version: '2.0.0',
+        platform: 'Vercel Serverless',
+        version: '2.1-secure',
+        security: 'API keys secured with environment variables',
         endpoints: {
             chat: '/api/chat',
             health: '/api/health'
-        }
+        },
+        features: [
+            '✅ GPT-4o-mini integration',
+            '✅ ADHD-optimized prompts', 
+            '✅ Conversation memory',
+            '✅ Educational psychology',
+            '🔐 Secure environment variables'
+        ]
     });
 }
