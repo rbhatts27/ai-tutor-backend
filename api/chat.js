@@ -1,6 +1,6 @@
 // api/chat.js - Fixed Vercel Serverless Function
 
-const OPENAI_API_KEY = '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';
+const OPENAI_API_KEY = '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';
 
 const SYSTEM_PROMPT = `You are an incredibly encouraging AI tutor for a 5th grade student with ADHD. Your student is smart, curious, but needs extra support with focus and breaking things down.
 
