@@ -1,0 +1,26 @@
+{
+  "name": "ai-tutor-backend",
+  "version": "2.0.0",
+  "description": "AI Tutor Backend for ADHD-friendly learning support - Serverless Functions",
+  "main": "api/chat.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step needed for serverless functions'"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.9"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "ai-tutor",
+    "education",
+    "adhd",
+    "openai",
+    "learning",
+    "serverless"
+  ],
+  "author": "AI Tutor Developer",
+  "license": "MIT"
+}
